@@ -1,0 +1,287 @@
+/* public/css/styles.css */
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #338be4;
+  color: #333;
+}
+/* Navbar Styles */
+.navbar {
+  background-color: #004080; /* Blue color for navbar */
+  border-bottom: 2px solid #ffcc00; /* Optional: adds a gold bottom border for contrast */
+}
+
+.navbar-brand {
+  color: #fff; /* White text for brand */
+  font-weight: bold;
+}
+
+.navbar-brand:hover {
+  color: #cce6ff; /* Lighter blue on hover */
+}
+
+.navbar-nav .nav-link {
+  color: #fff !important; /* White text for navigation links */
+  font-size: 1rem; /* Adjust font size */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #cce6ff !important; /* Lighter blue on hover */
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  background-color: #fff; /* White icon for better visibility */
+}
+.brand-text {
+  font-family: 'Roboto', sans-serif; /* Apply Roboto font */
+  font-size: 1.5rem; /* Enlarge text slightly (default is ~1rem) */
+  font-weight: 700; /* Use bold weight for emphasis */
+  color: #fff; /* Ensure visibility on the navbar */
+  margin-left: 10px; /* Add space between the logo and text */
+  text-transform: uppercase; /* Optional: Make the text uppercase */
+  letter-spacing: 1px; /* Optional: Add some spacing between letters */
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  padding: 150px 0;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 64, 128, 0.5);
+}
+
+.hero-section h1,
+.hero-section p {
+  color: #fff;
+}
+
+.hero-section .btn-primary {
+  background-color: #ffcc00;
+  border-color: #ffcc00;
+  color: #004080;
+}
+
+.hero-section .btn-primary:hover {
+  background-color: #e6b800;
+  border-color: #e6b800;
+}
+
+/* Services Section */
+.services-section {
+  background: linear-gradient(to bottom, #586a8f, #7889a7, #98aacf); /* Smooth gradient from dark to light */
+  padding: 60px 0; /* Slightly larger padding for better spacing */
+  color: #ffffff; /* Ensure text on the gradient is readable */
+}
+
+.services-section h2 {
+  color: #ffffff; /* White text for contrast against gradient */
+  font-family: 'Roboto', sans-serif; /* Use Roboto font for consistency */
+  font-size: 2.5rem; /* Larger heading for better emphasis */
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 40px; /* Increased spacing below the heading */
+  text-transform: uppercase; /* Optional: Make heading uppercase for style */
+}
+
+.services-section .card {
+  border: none;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1); /* Transparent white background to blend with gradient */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+  border-radius: 10px; /* Rounded corners for a softer look */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+}
+
+.services-section .card:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
+}
+
+.services-section .card-img-top {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin: 20px auto;
+  border-radius: 50%; /* Circular images */
+  border: 3px solid #ffffff; /* White border for better visibility */
+  background-color: #586a8f; /* Fallback color in case the image doesn't load */
+}
+
+.services-section .card-title {
+  color: #ffffff; /* White text for titles */
+  font-weight: bold;
+  font-size: 1.5rem; /* Slightly larger font for service names */
+  margin-top: 15px;
+}
+
+.services-section .card-text {
+  color: #e0e0e0; /* Light gray text for descriptions */
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.5; /* Improve text readability */
+}
+
+.services-section .btn-primary {
+  background-color: #004080; /* Sky blue button */
+  border-color: #004080;
+  color: #ffffff; /* White text */
+  padding: 10px 30px; /* Larger padding for a more prominent button */
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px; /* Rounded corners for buttons */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.services-section .btn-primary:hover {
+  background-color: #0056b3; /* Slightly darker blue on hover */
+  border-color: #0056b3;
+  transform: scale(1.1); /* Slightly enlarge button on hover */
+}
+
+
+
+/* About Section */
+.about-section img {
+  border-radius: 10px;
+  width: 100%;
+}
+
+/* Footer */
+footer {
+  background-color: #004080;
+  color: #fff;
+}
+
+footer a {
+  color: #cce6ff;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+footer h5 {
+  color: #ffcc00;
+}
+/* Testimonials Section */
+.testimonials-section {
+  background-color: #f8f9fa; /* Light gray background for contrast */
+  padding: 50px 0; /* Consistent padding */
+}
+
+.testimonials-section h2 {
+  color: #004080; /* Sky blue heading */
+  font-family: 'Roboto', sans-serif; /* Maintain consistent font */
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.testimonials-section blockquote {
+  background: #ffffff; /* White background for quotes */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px;
+  font-style: italic;
+}
+
+.testimonials-section blockquote p {
+  color: #555; /* Neutral gray for quote text */
+  font-size: 1rem;
+}
+
+.testimonials-section blockquote footer {
+  color: #004080; /* Sky blue for author name */
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* Gallery Section */
+.gallery-section {
+  padding: 50px 0;
+  background-color: #ffffff; /* Plain white for gallery section */
+}
+
+.gallery-section h2 {
+  color: #004080; /* Sky blue heading */
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.gallery-section img {
+  border-radius: 10px; /* Rounded corners for images */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-section img:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+/* Contact Section */
+.contact-section {
+  background-color: #f8f9fa; /* Light gray for contrast */
+  padding: 50px 0;
+}
+
+.contact-section h2 {
+  color: #004080; /* Sky blue heading */
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.contact-section form {
+  background: #ffffff; /* White background for the form */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 30px;
+}
+
+.contact-section input,
+.contact-section textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px;
+}
+
+.contact-section input:focus,
+.contact-section textarea:focus {
+  border-color: #004080; /* Sky blue focus border */
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(0, 64, 128, 0.5); /* Subtle glow */
+}
+
+.contact-section button {
+  background-color: #004080; /* Sky blue button */
+  border-color: #004080;
+  color: #ffffff; /* White text */
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-section button:hover {
+  background-color: #0056b3; /* Slightly darker blue on hover */
+  transform: scale(1.05); /* Slight zoom */
+}

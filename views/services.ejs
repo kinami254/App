@@ -1,0 +1,24 @@
+ <!-- views/services.ejs -->
+<% layout = 'layout' %>
+
+<section class="services-page py-5">
+  <div class="container">
+    <h1 class="text-center mb-5">Our Services</h1>
+    <div class="row">
+      <% services.forEach(service => { %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <% if (service.icon) { %>
+          <img src="/images/icons/<%= service.icon %>" class="card-img-top rounded-circle" alt="<%= service.name %>">
+          <% } %>
+          <div class="card-body">
+            <h5 class="card-title"><%= service.name %></h5>
+            <p class="card-text"><%= service.description %></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+

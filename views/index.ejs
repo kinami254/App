@@ -1,0 +1,114 @@
+<!-- views/index.ejs -->
+<% layout = 'layout' %>
+
+<!-- Hero Section -->
+<section class="hero-section text-white text-center" style="background-image: url('/images/hero.jpg'); background-size: cover; background-position: center; padding: 100px 0;">
+  <div class="container">
+    <h1>Welcome to Forever True Adult Family Home</h1>
+    <p>Providing compassionate care in a homely environment.</p>
+    <a href="/contact" class="btn btn-primary btn-lg">Contact Us</a>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Our Services</h2>
+    <div class="row">
+      <% services.forEach(service => { %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <% if (service.icon) { %>
+          <img src="/images/icons/<%= service.icon %>" class="card-img-top rounded-circle" alt="<%= service.name %>">
+          <% } %>
+          <div class="card-body">
+            <h5 class="card-title"><%= service.name %></h5>
+            <p class="card-text"><%= service.description %></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <div class="text-center">
+      <a href="/services" class="btn btn-primary">View All Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">About Us</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <p>Forever True AFH is dedicated to providing top-notch care for our residents, focusing on a personalized, compassionate approach. Our mission is to create a warm and loving environment for your loved ones to thrive.</p>
+        <a href="/about" class="btn btn-primary">Learn More</a>
+      </div>
+      <div class="col-md-6">
+        <img src="/images/about.jpg" alt="About Us" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section py-5" style="background-color: #f8f9fa;">
+  <div class="container">
+    <h2 class="text-center mb-5">What Our Families Say</h2>
+    <div class="row">
+      <% testimonials.forEach(testimonial => { %>
+      <div class="col-md-4">
+        <blockquote class="blockquote text-center">
+          <p class="mb-4">"<%= testimonial.message %>"</p>
+          <footer class="blockquote-footer"><%= testimonial.name %></footer>
+        </blockquote>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery-section py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Our Gallery</h2>
+    <div class="row">
+      <% gallery.forEach(image => { %>
+      <div class="col-md-4 mb-4">
+        <img src="/images/gallery/<%= image %>" alt="Gallery Image" class="img-fluid rounded">
+      </div>
+      <% }) %>
+    </div>
+    <div class="text-center">
+      <a href="/gallery" class="btn btn-primary">View Full Gallery</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Get In Touch</h2>
+    <form action="/contact" method="POST">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 mb-3">
+          <textarea class="form-control" name="message" rows="4" placeholder="Your Message" required></textarea>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+

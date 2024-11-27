@@ -1,0 +1,15 @@
+<!-- views/gallery.ejs -->
+<% layout = 'layout' %>
+
+<section class="gallery-page py-5">
+  <div class="container">
+    <h1 class="text-center mb-5">Gallery</h1>
+    <div class="row">
+      <% gallery.forEach(image => { %>
+      <div class="col-md-4 mb-4">
+        <img src="/images/gallery/<%= image.image %>" alt="Gallery Image" class="img-fluid rounded">
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>

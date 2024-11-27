@@ -1,0 +1,18 @@
+<!-- views/testimonials.ejs -->
+<% layout = 'layout' %>
+
+<section class="testimonials-page py-5">
+  <div class="container">
+    <h1 class="text-center mb-5">Testimonials</h1>
+    <div class="row">
+      <% testimonials.forEach(testimonial => { %>
+      <div class="col-md-4">
+        <blockquote class="blockquote text-center">
+          <p class="mb-4">"<%= testimonial.message %>"</p>
+          <footer class="blockquote-footer"><%= testimonial.name %></footer>
+        </blockquote>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>

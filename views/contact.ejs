@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    >
+  </head>
+  <body>
+    <!-- Include JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+    <!-- Contact Section -->
+    <section class="contact-section py-5">
+      <div class="container">
+        <h1 class="text-center mb-5">Contact Us</h1>
+        <form action="/contact" method="POST">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="text" class="form-control" id="phone" name="phone">
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject:</label>
+            <input type="text" class="form-control" id="subject" name="subject">
+          </div>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+
+        <!-- List Contacts -->
+        <% if (contacts && contacts.length > 0) { %>
+          <div class="mt-5">
+            <h3 class="text-center">Submitted Contacts</h3>
+            <ul class="list-group">
+              <% contacts.forEach(contact => { %>
+                <li class="list-group-item">
+                  <strong>Name:</strong> <%= contact.name %><br>
+                  <strong>Email:</strong> <%= contact.email %><br>
+                  <strong>Phone:</strong> <%= contact.phone || 'N/A' %><br>
+                  <strong>Subject:</strong> <%= contact.subject || 'N/A' %><br>
+                  <strong>Message:</strong> <%= contact.message %><br>
+                  <strong>Submission Date:</strong> <%= new Date(contact.submission_date).toLocaleString() %><br>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
+        <% } else { %>
+          <p class="mt-5 text-center">No contacts found.</p>
+        <% } %>
+      </div>
+    </section>
+  </body>
+</html>
