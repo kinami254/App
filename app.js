@@ -5,7 +5,13 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
-const db = require('./config/db');
+const session = require('express-session');
+const helmet = require('helmet');
+const csrf = require('csurf');
+const rateLimit = require('express-rate-limit');
+const flash = require('connect-flash');
+const logger = require('./config/logger'); // Winston logger
+
 const port = process.env.PORT || 3000;
 
 // Middleware to parse JSON and URL-encoded data
@@ -14,6 +20,32 @@ app.use(express.urlencoded({ extended: true }));
 
 // Use express-ejs-layouts
 app.use(expressLayouts);
+
+// Security Middleware
+app.use(helmet());
+
+// Session middleware
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'your_secret_key', // Replace with a strong secret in production
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }, // Set to true if using HTTPS
+}));
+
+// Initialize flash messages
+app.use(flash());
+
+// Initialize CSRF protection
+const csrfProtection = csrf();
+app.use(csrfProtection);
+
+// Pass CSRF token and flash messages to all views
+app.use((req, res, next) => {
+  res.locals.csrfToken = req.csrfToken();
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  next();
+});
 
 // Set up EJS as the templating engine
 app.set('view engine', 'ejs');
@@ -26,9 +58,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 const indexRouter = require('./routes/index');
 app.use('/', indexRouter);
 
-// Start the server
-app.listen(3000, '0.0.0.0', () => console.log('Server running on port 3000'));
+// Centralized Error Handling Middleware
+app.use((err, req, res, next) => {
+  if (err.code === 'EBADCSRFTOKEN') {
+    // Handle CSRF token errors here
+    logger.warn(`CSRF token error: ${err.message}`);
+    res.status(403).send('Form tampered with.');
+  } else {
+    logger.error(`Unhandled Error: ${err.message}`);
+    res.status(500).send('Something went wrong!');
+  }
+});
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

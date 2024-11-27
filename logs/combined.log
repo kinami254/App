@@ -1,0 +1,4 @@
+{"level":"info","message":"Database connected successfully.","service":"forevertrue-afh-service","timestamp":"2024-11-28 02:18:21"}
+{"level":"warn","message":"CSRF token error: invalid csrf token","service":"forevertrue-afh-service","timestamp":"2024-11-28 02:19:08"}
+{"level":"warn","message":"CSRF token error: invalid csrf token","service":"forevertrue-afh-service","timestamp":"2024-11-28 02:19:45"}
+{"level":"info","message":"Database connected successfully.","service":"forevertrue-afh-service","timestamp":"2024-11-28 02:20:57"}
