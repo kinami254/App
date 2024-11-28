@@ -1,0 +1,52 @@
+<!-- views/services.ejs -->
+<% layout = 'layout' %>
+
+<h2>Our Services</h2>
+
+<!-- Display Flash Messages -->
+<% if (success && success.length > 0) { %>
+  <div class="alert alert-success"><%= success[0] %></div>
+<% } %>
+<% if (error && error.length > 0) { %>
+  <div class="alert alert-danger"><%= error[0] %></div>
+<% } %>
+
+<div class="row">
+  <% services.forEach(service => { %>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <% if (service.icon) { %>
+          <img src="/images/icons/<%= service.icon %>" class="card-img-top rounded-circle" alt="<%= service.name %>">
+        <% } %>
+        <div class="card-body">
+          <h5 class="card-title"><%= service.name %></h5>
+          <p class="card-text"><%= service.description %></p>
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</div>
+
+<!-- Form to Add a New Service -->
+<% if (user) { %>
+  <h3>Add a New Service</h3>
+  <form action="/services" method="POST">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <div class="form-group">
+      <label for="name">Service Name:</label>
+      <input type="text" name="name" id="name" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Service Description:</label>
+      <textarea name="description" id="description" class="form-control" rows="3" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="icon">Service Icon:</label>
+      <input type="text" name="icon" id="icon" class="form-control" required>
+      <small class="form-text text-muted">Enter the icon filename (e.g., service-icon.png).</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Service</button>
+  </form>
+<% } else { %>
+  <p>Please <a href="/login">log in</a> to add a new service.</p>
+<% } %>

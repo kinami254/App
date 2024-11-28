@@ -1,0 +1,41 @@
+<!-- views/dashboard.ejs -->
+<% layout = 'layout' %>
+
+<h2>Welcome, <%= user.name %></h2>
+
+<h3>My Bookings</h3>
+<% if (bookings.length > 0) { %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Appointment Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% bookings.forEach(booking => { %>
+        <tr>
+          <td><%= booking.Service.name %></td>
+          <td><%= booking.appointmentDate.toLocaleString() %></td>
+          <td><%= booking.status %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <p>You have no bookings.</p>
+<% } %>
+
+<h3>My Testimonials</h3>
+<% if (testimonials.length > 0) { %>
+  <ul>
+    <% testimonials.forEach(testimonial => { %>
+      <li>
+        "<%= testimonial.message %>" - <strong><%= testimonial.userName %></strong> on <%= testimonial.createdAt.toLocaleDateString() %>
+      </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>You have not submitted any testimonials yet.</p>
+<% } %>

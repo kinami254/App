@@ -1,19 +1,18 @@
 // controllers/galleryController.js
 
-const db = require('../config/db');
+const GalleryImage = require('../models/GalleryImage');
+const logger = require('../config/logger');
 
-exports.getGalleryPage = (req, res) => {
-  const galleryQuery = 'SELECT * FROM gallery';
-
-  db.query(galleryQuery, (err, galleryResults) => {
-    if (err) {
-      console.error('Error fetching gallery images:', err);
-      res.status(500).send('An error occurred.');
-    } else {
-      res.render('gallery', {
-        gallery: galleryResults,
-        title: 'Gallery',
-      });
-    }
-  });
+exports.getGalleryPage = async (req, res) => {
+  try {
+    const galleryImages = await GalleryImage.findAll({
+      order: [['createdAt', 'DESC']],
+    });
+    res.render('gallery', { title: 'Gallery', galleryImages });
+  } catch (err) {
+    console.error('Error fetching gallery images:', err);
+    logger.error(`Error fetching gallery images: ${err.message}`);
+    req.flash('error', 'An error occurred while fetching gallery images.');
+    res.status(500).redirect('/');
+  }
 };

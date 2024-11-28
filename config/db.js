@@ -1,24 +1,25 @@
 // config/db.js
 
 require('dotenv').config();
-const mysql = require('mysql2');
-const logger = require('./logger'); // Import logger
+const { Sequelize } = require('sequelize');
+const logger = require('./logger');
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'forevertrue_db',
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+  host: process.env.DB_HOST,
+  dialect: 'mysql',
+  logging: (msg) => logger.info(msg), // Integrate with Winston
 });
 
-connection.connect((err) => {
-  if (err) {
+// Test connection
+sequelize.authenticate()
+  .then(() => {
+    console.log('Database connected successfully.');
+    logger.info('Database connected successfully.');
+  })
+  .catch(err => {
     console.error('Database connection failed:', err.message);
     logger.error(`Database connection failed: ${err.message}`);
     process.exit(1); // Exit process if connection fails
-  }
-  console.log('Database connected successfully.');
-  logger.info('Database connected successfully.');
-});
+  });
 
-module.exports = connection;
+module.exports = sequelize;

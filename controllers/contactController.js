@@ -1,38 +1,44 @@
 // controllers/contactController.js
 
-const db = require('../config/db');
+const { body, validationResult } = require('express-validator');
+const Contact = require('../models/Contact');
+const logger = require('../config/logger');
 
 exports.getContactPage = (req, res) => {
-  const sql = 'SELECT * FROM contacts';
-
-  db.query(sql, (err, results) => {
-    if (err) {
-      console.error('Error fetching contacts:', err);
-      res.status(500).send(`An error occurred while fetching contacts: ${err.message}`);
-    } else {
-      res.render('contact', {
-        title: 'Contact Us',
-        contacts: results,
-        success: req.query.success || false, // Pass success flag
-      });
-    }
-  });
+  res.render('contact', { title: 'Contact Us' });
 };
 
-exports.submitContactForm = (req, res) => {
-  const { name, email, phone, subject, message } = req.body;
+exports.submitContactForm = [
+  // Validation rules
+  body('name').trim().notEmpty().withMessage('Name is required.'),
+  body('email').isEmail().withMessage('Valid email is required.'),
+  body('message').trim().notEmpty().withMessage('Message is required.'),
+  
+  // Handle validation results
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      const errorMessages = errors.array().map(err => err.msg);
+      req.flash('error', errorMessages.join(' '));
+      return res.status(400).redirect('/contact');
+    }
+    next();
+  },
 
-  if (!name || !email || !message) {
-    return res.status(400).send('Name, email, and message are required.');
+  // Proceed with saving contact
+  async (req, res) => {
+    const { name, email, phone, subject, message } = req.body;
+
+    try {
+      await Contact.create({ name, email, phone, subject, message });
+      logger.info(`New contact form submitted by ${name} (${email})`);
+      req.flash('success', 'Your message has been sent successfully!');
+      res.redirect('/contact');
+    } catch (err) {
+      console.error('Error submitting contact form:', err);
+      logger.error(`Error submitting contact form: ${err.message}`);
+      req.flash('error', 'An error occurred while sending your message.');
+      res.status(500).redirect('/contact');
+    }
   }
-
-  const sql = 'INSERT INTO contacts (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)';
-  db.query(sql, [name, email, phone, subject, message], (err, result) => {
-    if (err) {
-      console.error('Error inserting contact data:', err);
-      res.status(500).send(`An error occurred: ${err.message}`);
-    } else {
-      res.redirect('/contact?success=true'); // Redirect with success flag
-    }
-  });
-};
+];

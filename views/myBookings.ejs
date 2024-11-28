@@ -1,0 +1,34 @@
+<!-- views/myBookings.ejs -->
+<% layout = 'layout' %>
+
+<h2>My Bookings</h2>
+
+<% if (success && success.length > 0) { %>
+  <div class="alert alert-success"><%= success[0] %></div>
+<% } %>
+<% if (error && error.length > 0) { %>
+  <div class="alert alert-danger"><%= error[0] %></div>
+<% } %>
+
+<% if (bookings.length > 0) { %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Appointment Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% bookings.forEach(booking => { %>
+        <tr>
+          <td><%= booking.Service.name %></td>
+          <td><%= booking.appointmentDate.toLocaleString() %></td>
+          <td><%= booking.status %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <p>You have no bookings.</p>
+<% } %>

@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const rateLimit = require('express-rate-limit'); // Import rate limiter
+const rateLimit = require('express-rate-limit');
 
 const homeController = require('../controllers/homeController');
 const contactController = require('../controllers/contactController');
@@ -30,10 +30,11 @@ router.get('/about', aboutController.getAboutPage);
 
 // Services Page
 router.get('/services', servicesController.getServicesPage);
-router.post('/services', serviceInsertionLimiter, servicesController.checkAndInsertService); // Apply rate limiter
+router.post('/services', serviceInsertionLimiter, servicesController.checkAndInsertService);
 
 // Testimonials Page
 router.get('/testimonials', testimonialsController.getTestimonialsPage);
+router.post('/testimonials', testimonialsController.submitTestimonial);
 
 // Gallery Page
 router.get('/gallery', galleryController.getGalleryPage);

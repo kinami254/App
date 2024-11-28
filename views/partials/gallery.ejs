@@ -1,0 +1,37 @@
+<!-- views/gallery.ejs -->
+<% layout = 'layout' %>
+
+<h2>Gallery</h2>
+
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <% galleryImages.forEach(image => { %>
+      <div class="swiper-slide">
+        <img src="/images/gallery/<%= image.filename %>" alt="<%= image.description %>" class="img-fluid">
+        <p><%= image.description %></p>
+      </div>
+    <% }) %>
+  </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+  <!-- Add Navigation -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- Initialize Swiper -->
+<script>
+  const swiper = new Swiper('.swiper-container', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>

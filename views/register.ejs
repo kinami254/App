@@ -1,0 +1,28 @@
+<!-- views/register.ejs -->
+<% layout = 'layout' %>
+
+<h2>Register</h2>
+
+<% if (error && error.length > 0) { %>
+  <div class="alert alert-danger"><%= error[0] %></div>
+<% } %>
+<% if (success && success.length > 0) { %>
+  <div class="alert alert-success"><%= success[0] %></div>
+<% } %>
+
+<form action="/register" method="POST">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Register</button>
+</form>

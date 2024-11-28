@@ -1,33 +1,51 @@
-/* public/css/styles.css */
-
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
   background-color: #338be4;
   color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #004080;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
 /* Navbar Styles */
 .navbar {
-  background-color: #004080; /* Blue color for navbar */
-  border-bottom: 2px solid #ffcc00; /* Optional: adds a gold bottom border for contrast */
+  background-color: #004080;
+  border-bottom: 2px solid #ffcc00;
 }
 
 .navbar-brand {
-  color: #fff; /* White text for brand */
+  color: #fff;
   font-weight: bold;
 }
 
 .navbar-brand:hover {
-  color: #cce6ff; /* Lighter blue on hover */
+  color: #cce6ff;
 }
 
 .navbar-nav .nav-link {
-  color: #fff !important; /* White text for navigation links */
-  font-size: 1rem; /* Adjust font size */
+  color: #fff !important;
+  font-size: 1rem;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #cce6ff !important; /* Lighter blue on hover */
+  color: #cce6ff !important;
 }
 
 .navbar-toggler {
@@ -35,16 +53,12 @@ body {
 }
 
 .navbar-toggler-icon {
-  background-color: #fff; /* White icon for better visibility */
+  background-color: #fff;
 }
-.brand-text {
-  font-family: 'Roboto', sans-serif; /* Apply Roboto font */
-  font-size: 1.5rem; /* Enlarge text slightly (default is ~1rem) */
-  font-weight: 700; /* Use bold weight for emphasis */
-  color: #fff; /* Ensure visibility on the navbar */
-  margin-left: 10px; /* Add space between the logo and text */
-  text-transform: uppercase; /* Optional: Make the text uppercase */
-  letter-spacing: 1px; /* Optional: Add some spacing between letters */
+
+.nav-link.active {
+  font-weight: bold;
+  border-bottom: 2px solid #ffcc00;
 }
 
 /* Hero Section */
@@ -75,33 +89,31 @@ body {
 
 /* Services Section */
 .services-section {
-  background: linear-gradient(to bottom, #586a8f, #7889a7, #98aacf); /* Smooth gradient from dark to light */
-  padding: 60px 0; /* Slightly larger padding for better spacing */
-  color: #ffffff; /* Ensure text on the gradient is readable */
+  background: linear-gradient(to bottom, #586a8f, #7889a7, #98aacf);
+  padding: 60px 0;
+  color: #ffffff;
 }
 
 .services-section h2 {
-  color: #ffffff; /* White text for contrast against gradient */
-  font-family: 'Roboto', sans-serif; /* Use Roboto font for consistency */
-  font-size: 2.5rem; /* Larger heading for better emphasis */
+  color: #ffffff;
+  font-size: 2.5rem;
   text-align: center;
-  font-weight: bold;
-  margin-bottom: 40px; /* Increased spacing below the heading */
-  text-transform: uppercase; /* Optional: Make heading uppercase for style */
+  margin-bottom: 40px;
+  text-transform: uppercase;
 }
 
 .services-section .card {
   border: none;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.1); /* Transparent white background to blend with gradient */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
-  border-radius: 10px; /* Rounded corners for a softer look */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .services-section .card:hover {
-  transform: translateY(-10px); /* Lift effect on hover */
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
+  transform: translateY(-10px);
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 .services-section .card-img-top {
@@ -109,44 +121,36 @@ body {
   height: 120px;
   object-fit: cover;
   margin: 20px auto;
-  border-radius: 50%; /* Circular images */
-  border: 3px solid #ffffff; /* White border for better visibility */
-  background-color: #586a8f; /* Fallback color in case the image doesn't load */
+  border-radius: 50%;
+  border: 3px solid #ffffff;
 }
 
 .services-section .card-title {
-  color: #ffffff; /* White text for titles */
-  font-weight: bold;
-  font-size: 1.5rem; /* Slightly larger font for service names */
+  color: #ffffff;
+  font-size: 1.5rem;
   margin-top: 15px;
 }
 
 .services-section .card-text {
-  color: #e0e0e0; /* Light gray text for descriptions */
+  color: #e0e0e0;
   font-size: 1rem;
   margin-bottom: 20px;
-  line-height: 1.5; /* Improve text readability */
 }
 
 .services-section .btn-primary {
-  background-color: #004080; /* Sky blue button */
-  border-color: #004080;
-  color: #ffffff; /* White text */
-  padding: 10px 30px; /* Larger padding for a more prominent button */
+  background-color: #004080;
+  color: #ffffff;
+  padding: 10px 30px;
   font-size: 1rem;
   font-weight: bold;
-  text-transform: uppercase;
-  border-radius: 5px; /* Rounded corners for buttons */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .services-section .btn-primary:hover {
-  background-color: #0056b3; /* Slightly darker blue on hover */
-  border-color: #0056b3;
-  transform: scale(1.1); /* Slightly enlarge button on hover */
+  background-color: #0056b3;
+  transform: scale(1.1);
 }
-
-
 
 /* About Section */
 .about-section img {
@@ -154,10 +158,117 @@ body {
   width: 100%;
 }
 
+/* Testimonials Section */
+.testimonials-section {
+  background-color: #f8f9fa;
+  padding: 50px 0;
+}
+
+.testimonials-section h2 {
+  color: #004080;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.testimonials-section blockquote {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  font-style: italic;
+}
+
+.testimonials-section blockquote p {
+  color: #555;
+  font-size: 1rem;
+}
+
+.testimonials-section blockquote footer {
+  color: #004080;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Gallery Section */
+.gallery-section {
+  padding: 50px 0;
+  background-color: #ffffff;
+}
+
+.gallery-section h2 {
+  color: #004080;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.gallery-section img {
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-section img:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Contact Section */
+.contact-section {
+  background-color: #f8f9fa;
+  padding: 50px 0;
+}
+
+.contact-section h2 {
+  color: #004080;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.contact-section form {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.contact-section input,
+.contact-section textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.contact-section input:focus,
+.contact-section textarea:focus {
+  border-color: #004080;
+  box-shadow: 0px 0px 5px rgba(0, 64, 128, 0.5);
+}
+
+.contact-section button {
+  background-color: #004080;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-section button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
 /* Footer */
 footer {
   background-color: #004080;
   color: #fff;
+  padding: 20px 0;
+  text-align: center;
 }
 
 footer a {
@@ -170,118 +281,4 @@ footer a:hover {
 
 footer h5 {
   color: #ffcc00;
-}
-/* Testimonials Section */
-.testimonials-section {
-  background-color: #f8f9fa; /* Light gray background for contrast */
-  padding: 50px 0; /* Consistent padding */
-}
-
-.testimonials-section h2 {
-  color: #004080; /* Sky blue heading */
-  font-family: 'Roboto', sans-serif; /* Maintain consistent font */
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-.testimonials-section blockquote {
-  background: #ffffff; /* White background for quotes */
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding: 20px;
-  font-style: italic;
-}
-
-.testimonials-section blockquote p {
-  color: #555; /* Neutral gray for quote text */
-  font-size: 1rem;
-}
-
-.testimonials-section blockquote footer {
-  color: #004080; /* Sky blue for author name */
-  font-weight: bold;
-  font-size: 0.9rem;
-  margin-top: 10px;
-}
-
-/* Gallery Section */
-.gallery-section {
-  padding: 50px 0;
-  background-color: #ffffff; /* Plain white for gallery section */
-}
-
-.gallery-section h2 {
-  color: #004080; /* Sky blue heading */
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-.gallery-section img {
-  border-radius: 10px; /* Rounded corners for images */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery-section img:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
-}
-
-/* Contact Section */
-.contact-section {
-  background-color: #f8f9fa; /* Light gray for contrast */
-  padding: 50px 0;
-}
-
-.contact-section h2 {
-  color: #004080; /* Sky blue heading */
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 30px;
-}
-
-.contact-section form {
-  background: #ffffff; /* White background for the form */
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding: 30px;
-}
-
-.contact-section input,
-.contact-section textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd; /* Light border */
-  border-radius: 5px;
-}
-
-.contact-section input:focus,
-.contact-section textarea:focus {
-  border-color: #004080; /* Sky blue focus border */
-  outline: none;
-  box-shadow: 0px 0px 5px rgba(0, 64, 128, 0.5); /* Subtle glow */
-}
-
-.contact-section button {
-  background-color: #004080; /* Sky blue button */
-  border-color: #004080;
-  color: #ffffff; /* White text */
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.contact-section button:hover {
-  background-color: #0056b3; /* Slightly darker blue on hover */
-  transform: scale(1.05); /* Slight zoom */
 }

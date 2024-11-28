@@ -1,18 +1,34 @@
 <!-- views/testimonials.ejs -->
 <% layout = 'layout' %>
 
-<section class="testimonials-page py-5">
-  <div class="container">
-    <h1 class="text-center mb-5">Testimonials</h1>
-    <div class="row">
-      <% testimonials.forEach(testimonial => { %>
-      <div class="col-md-4">
-        <blockquote class="blockquote text-center">
-          <p class="mb-4">"<%= testimonial.message %>"</p>
-          <footer class="blockquote-footer"><%= testimonial.name %></footer>
-        </blockquote>
-      </div>
-      <% }) %>
+<h2>Testimonials</h2>
+
+<% if (success && success.length > 0) { %>
+  <div class="alert alert-success"><%= success[0] %></div>
+<% } %>
+<% if (error && error.length > 0) { %>
+  <div class="alert alert-danger"><%= error[0] %></div>
+<% } %>
+
+<div class="testimonials">
+  <% testimonials.forEach(testimonial => { %>
+    <div class="testimonial mb-4">
+      <p>"<%= testimonial.message %>"</p>
+      <p><strong>- <%= testimonial.userName %></strong></p>
     </div>
-  </div>
-</section>
+  <% }) %>
+</div>
+
+<% if (user) { %>
+  <h3>Submit Your Testimonial</h3>
+  <form action="/testimonials" method="POST">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <div class="form-group">
+      <label for="message">Your Testimonial:</label>
+      <textarea name="message" id="message" class="form-control" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+<% } else { %>
+  <p>Please <a href="/login">log in</a> to submit a testimonial.</p>
+<% } %>
